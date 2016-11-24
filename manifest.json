@@ -1,0 +1,7 @@
+{
+  "name": "dashboard",
+  "short_name": "dashboard",
+  "description": "Analytics Dashboard",
+  "start_url": "/",
+  "display": "standalone"
+}
