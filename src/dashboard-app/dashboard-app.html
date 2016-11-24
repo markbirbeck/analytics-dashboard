@@ -4,6 +4,7 @@
 <link rel="import" href="../../bower_components/app-route/app-location.html">
 <link rel="import" href="../../bower_components/app-route/app-route.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 
 <dom-module id="dashboard-app">
@@ -126,6 +127,18 @@
         </a>
       </app-toolbar>
     </app-header>
+
+    <iron-pages id="pages"
+     role="main"
+     selected="[[routeData.page]]"
+     selected-attribute="active"
+     attr-for-selected="name"
+     fallback-selection="list">
+      <dashboard-list-page name="list"
+       subroute="[[subroute]]"></dashboard-list-page>
+      <dashboard-page name="dashboard"
+       subroute="[[subroute]]"></dashboard-page>
+    </iron-pages>
   </template>
 
   <script>
