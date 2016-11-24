@@ -1,4 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/app-route/app-location.html">
+<link rel="import" href="../../bower_components/app-route/app-route.html">
 
 <dom-module id="dashboard-app">
   <template>
@@ -7,7 +9,12 @@
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]</h2>
+    <app-location route="{{route}}"></app-location>
+    <app-route
+     route="{{route}}"
+     pattern="/:page"
+     data="{{routeData}}"
+     tail="{{subroute}}"></app-route>
   </template>
 
   <script>
@@ -16,10 +23,6 @@
       is: 'dashboard-app',
 
       properties: {
-        prop1: {
-          type: String,
-          value: 'dashboard-app',
-        },
       },
 
     });
