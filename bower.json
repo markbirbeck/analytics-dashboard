@@ -10,6 +10,9 @@
     "iron-elements": "PolymerElements/iron-elements#^1.0.0",
     "iron-flex-layout": "PolymerElements/iron-flex-layout#^1.0.0",
     "iron-pages": "PolymerElements/iron-pages#^1.0.0",
+    "neon-elements": "PolymerElements/neon-elements#^1.0.0",
+    "page": "visionmedia/page.js#~1.6.4",
+    "paper-elements": "PolymerElements/paper-elements#^1.0.1",
     "paper-icon-button": "PolymerElements/paper-icon-button#^1.0.0",
     "platinum-elements": "PolymerElements/platinum-elements#^1.1.0",
     "backplanejs": "markbirbeck/backplanejs#^0.5.0"
