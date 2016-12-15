@@ -7,6 +7,8 @@
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 
+<link rel="import" href="salesMailshots.html">
+
 <dom-module id="dashboard-app">
   <template>
     <style>
@@ -139,6 +141,9 @@
       <dashboard-page name="dashboard"
        subroute="[[subroute]]"></dashboard-page>
     </iron-pages>
+
+    <sales-mailshots style="background-color: lightyellow;" api-server="http://localhost:3000" company="10576780"></sales-mailshots>
+    <sales-mailshots style="background-color: lightblue;" api-server="http://localhost:3000" company="90250180"></sales-mailshots>
   </template>
 
   <script>

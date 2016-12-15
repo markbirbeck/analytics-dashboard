@@ -1,0 +1,87 @@
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+
+<link rel="import" href="../../bower_components/backplanejs/polymer-components/plot-scatter.html">
+<link rel="import" href="../../bower_components/backplanejs/polymer-components/plot-time-series.html">
+
+<dom-module id="sales-mailshots">
+  <template>
+    <style>
+      h1 { color: white; }
+    </style>
+
+    <iron-ajax
+     auto
+     url="{{api-server}}/sales/value/greedbag"
+     params='{{_getParams(company)}}'
+     handle-as="json"
+     on-response="handleResponseSales"
+     debounce-duration="300"
+    ></iron-ajax>
+
+    <iron-ajax
+     auto
+     url="{{api-server}}/recipients/reached"
+     params='{{_getParams(company)}}'
+     handle-as="json"
+     on-response="handleResponseMailshot"
+     debounce-duration="300"
+    ></iron-ajax>
+
+    <h1>{{company}}</h1>
+    <div style="position: relative;">
+      <plot-scatter id="chartScatterSales" headers="price,count,colour" style="position: relative; top: 0; left: 0; width: 900px;"></plot-scatter>
+      <plot-time-series id="plotTimeSeries" time-format="%Y-%m-%d" style="position: absolute; top: 0; left: 0; width: 900px;"></plot-time-series>
+      <plot-scatter id="chartScatterTimeSeriesMailshot" headers="date,count,colour" style="position: absolute; top: 0; left: 0; width: 900px;"></plot-scatter>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'sales-mailshots',
+
+      properties: {
+        company: String,
+        apiServer: String
+      },
+
+      _getParams: function(company) {
+        return {
+          override: 'input.glob.body.query.bool.filter[3].term.agent___@id=' + company
+        }
+      },
+
+      handleResponseSales: function(event) {
+        let data = event.detail.response.buckets.map(bucket => {
+          return {
+            date: bucket.key_as_string,
+            price: bucket.doc_count
+          }
+        });
+        chart = this.$.plotTimeSeries;
+        chart.refresh(data);
+
+        data = event.detail.response.buckets.map(bucket => {
+          return {
+            count: bucket.doc_count,
+            price: bucket.value.value,
+            colour: 1
+          }
+        });
+        chart = this.$.chartScatterSales;
+        chart.refresh(data);
+      },
+
+      handleResponseMailshot: function(event) {
+        let data = event.detail.response.buckets.map(bucket => {
+          return {
+            date: bucket.key,
+            count: 0,
+            colour: 4
+          }
+        });
+        chart = this.$.chartScatterTimeSeriesMailshot;
+        chart.refresh(data);
+      },
+    });
+  </script>
+</dom-module>
