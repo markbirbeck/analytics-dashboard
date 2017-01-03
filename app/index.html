@@ -82,9 +82,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <span>Home</span>
           </a>
 
-          <a data-route="users" href="{{baseUrl}}users">
+          <a data-route="companies" href="{{baseUrl}}companies">
             <iron-icon icon="info"></iron-icon>
-            <span>Users</span>
+            <span>Companies</span>
           </a>
 
           <a data-route="contact" href="{{baseUrl}}contact">
@@ -127,21 +127,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               </paper-material>
             </section>
 
-            <section data-route="users" tabindex="-1">
+            <section data-route="companies" tabindex="-1">
               <paper-material elevation="1">
-                <h1 class="page-title" tabindex="-1">Users</h1>
-                <p>This is the users section</p>
-                <a href$="{{baseUrl}}users/Addy">Addy</a><br>
-                <a href$="{{baseUrl}}users/Rob">Rob</a><br>
-                <a href$="{{baseUrl}}users/Chuck">Chuck</a><br>
-                <a href$="{{baseUrl}}users/Sam">Sam</a>
+                <h1 class="page-title" tabindex="-1">Companies</h1>
+                <p>This is the companies section</p>
+                <a href$="{{baseUrl}}companies/10576780">10576780</a><br>
+                <a href$="{{baseUrl}}companies/90250180">90250180</a><br>
               </paper-material>
             </section>
 
-            <section data-route="user-info" tabindex="-1">
+            <section data-route="company-info" tabindex="-1">
               <paper-material elevation="-1">
-                <h1 class="page-title" tabindex="-1">User: {{params.name}}</h1>
-                <div>This is {{params.name}}'s section</div>
+                <h1 class="page-title" tabindex="-1">Company: {{params.id}}</h1>
+                <sales-mailshots style="background-color: lightyellow;" api-server="http://localhost:3000" company="{{params.id}}"></sales-mailshots>
+                <div>This is {{params.id}}'s section</div>
               </paper-material>
             </section>
 
