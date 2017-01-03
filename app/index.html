@@ -77,17 +77,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <!-- Drawer Content -->
         <paper-menu class="app-menu" attr-for-selected="data-route" selected="[[route]]">
-          <a data-route="home" href="{{baseUrl}}">
+          <a data-route="home" href="{{baseUrl}}dashboard/">
             <iron-icon icon="home"></iron-icon>
             <span>Home</span>
           </a>
 
-          <a data-route="companies" href="{{baseUrl}}companies">
+          <a data-route="companies" href="{{baseUrl}}dashboard/companies">
             <iron-icon icon="info"></iron-icon>
             <span>Companies</span>
           </a>
 
-          <a data-route="contact" href="{{baseUrl}}contact">
+          <a data-route="contact" href="{{baseUrl}}dashboard/contact">
             <iron-icon icon="mail"></iron-icon>
             <span>Contact</span>
           </a>
@@ -131,8 +131,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               <paper-material elevation="1">
                 <h1 class="page-title" tabindex="-1">Companies</h1>
                 <p>This is the companies section</p>
-                <a href$="{{baseUrl}}companies/10576780">10576780</a><br>
-                <a href$="{{baseUrl}}companies/90250180">90250180</a><br>
+                <a href$="{{baseUrl}}dashboard/companies/10576780">10576780</a><br>
+                <a href$="{{baseUrl}}dashboard/companies/90250180">90250180</a><br>
               </paper-material>
             </section>
 
